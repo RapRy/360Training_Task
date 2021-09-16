@@ -1,100 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/main.css" />
     <title>360 Training Task</title>
-</head>
-<body style="position: relative;">
-    <!-- start tasklist -->
-    <div class="taskList">
+  </head>
+  <body style="position: relative">
+    <main class="mainContainer">
+      <!-- start tasklist -->
+      <div class="taskList">
+        <h3>Task List</h3>
         <ul>
-            <li class="task">
-                <span class="taskCheckbox"></span>
-                <span>Click button and show text with sliding or fading animation</span>
-            </li>
-            <li class="task">
-                <span class="taskCheckbox"></span>
-                <span>Radio button and show text with sliding or fading animation</span>
-            </li>
-            <li class="task">
-                <span class="taskCheckbox"></span>
-                <span>Drag an object from one place to other, when placed at another hot spot show text with sliding or fading animation</span>
-            </li>
-            <li class="task">
-                <span class="taskCheckbox"></span>
-                <span>Right text in a Fill in the blank and show text with sliding or fading animation</span>
-            </li>
-            <li class="task">
-                <span class="taskCheckbox"></span>
-                <span>Sliding DIV when clicked on its header, slide back to original position when clicked outside</span>
-            </li>
+          <li class="task">
+            <span class="taskCheckbox"></span>
+            <span
+              >Click button and show text with sliding or fading animation</span
+            >
+          </li>
+          <li class="task">
+            <span class="taskCheckbox"></span>
+            <span
+              >Radio button and show text with sliding or fading animation</span
+            >
+          </li>
+          <li class="task">
+            <span class="taskCheckbox"></span>
+            <span
+              >Drag an object from one place to other, when placed at another
+              hot spot show text with sliding or fading animation</span
+            >
+          </li>
+          <li class="task">
+            <span class="taskCheckbox"></span>
+            <span
+              >Right text in a Fill in the blank and show text with sliding or
+              fading animation</span
+            >
+          </li>
+          <li class="task">
+            <span class="taskCheckbox"></span>
+            <span
+              >Sliding DIV when clicked on its header, slide back to original
+              position when clicked outside</span
+            >
+          </li>
         </ul>
-    </div>
-    <!-- end tasklist -->
+      </div>
+      <!-- end tasklist -->
 
-    <!-- fun begins here -->
-    <br />
-    <!-- first -->
-    <div class="firstTaskContainer">
-        <div class="innerContainer">
-            <button id="firstTask" type="button">First Task</button>
+      <!-- fun begins here -->
+      <div class="featuresContainer">
+        <!-- first -->
+        <div class="firstTaskContainer taskExampleContainer">
+          <div class="taskHeader">
+            <span class="taskNumber">1.</span>
+            <span class="taskTitle">First Task</span>
+          </div>
+          <div class="innerContainer">
+            <button id="firstTask" class="firstTaskBtn" type="button">
+              Click Me
+            </button>
+          </div>
+          <div id="firstTaskResult" class="resultContainer">
+            <p>First Task Result</p>
+          </div>
         </div>
-        <div id="firstTaskResult">
-            <p style="position: relative;">Magic</p>
-        </div>
-    </div>
-    <br />
-    <!-- second -->
-    <div class="secondTaskContainer">
-        <div class="innerContainer">
+        <br />
+        <!-- second -->
+        <div class="secondTaskContainer taskExampleContainer">
+          <div class="taskHeader">
+            <span class="taskNumber">2.</span>
+            <span class="taskTitle">Second Task</span>
+          </div>
+          <div class="innerContainer">
             <div class="customRadioContainer">
-                <div id="customRadio">
-                    <span style="width: 10px; height: 10px; background: gray; display: block;"></span>
-                    <span>Second Task</span>
-                </div>
-                <input id="secondTaskRealRadio" type="radio" />
+              <div id="customRadio" class="customRadio">
+                <span></span>
+                <span>I'm a Custom Radio Input</span>
+              </div>
+              <input id="secondTaskRealRadio" type="radio" />
             </div>
+          </div>
+          <div id="secondTaskResult" class="resultContainer">
+            <p>Second Task Result</p>
+          </div>
         </div>
-        <div id="secondTaskResult">
-            <p style="position: relative;">Magic</p>
-        </div>
-    </div>
-    <br />
-    <!-- third -->
-    <div class="thirdTaskContainer">
-        <div class="dragDropContainer">
-            <div class="leftDrop" style="width: 50px; height: 50px; border: 1px solid black; display: inline-block; margin-right: 50px;">
-                <span id="dragItem" draggable="true" style="font-size: 24px">👉</span>
+        <br />
+        <!-- third -->
+        <div class="thirdTaskContainer taskExampleContainer">
+          <div class="taskHeader">
+            <span class="taskNumber">3.</span>
+            <span class="taskTitle">Third Task</span>
+          </div>
+          <div class="dragDropContainer">
+            <div class="leftDrop dropBox">
+              <span id="dragItem" class="dragItem" draggable="true">👉</span>
             </div>
-            <div class="rightDrop" style="width: 50px; height: 50px; border: 1px solid black; display: inline-block;">
-
+            <div class="rightDrop dropBox"></div>
+          </div>
+          <div id="thirdTaskResult" class="resultContainer">
+            <p>Going to Right</p>
+          </div>
+        </div>
+        <br />
+        <!-- fourth -->
+        <div class="fourthTaskContainer taskExampleContainer">
+          <div class="taskHeader">
+            <span class="taskNumber">4.</span>
+            <span class="taskTitle">Fourth Task</span>
+          </div>
+          <div class="innerContainer">
+            <div class="inputContainer">
+              <span>✎</span>
+              <input
+                type="text"
+                placeholder="type something"
+                id="textInput"
+                class="textInput"
+              />
             </div>
+          </div>
+          <div id="fourthTaskResult" class="resultContainer"></div>
         </div>
-        <div id="thirdTaskResult">
-            <p style="position: relative;">Magic</p>
+        <br />
+        <!-- fifth -->
+        <div class="fifthTaskContainer">
+          <div class="taskHeader">
+            <span class="taskNumber">5.</span>
+            <span class="taskTitle">Fifth Task</span>
+          </div>
+          <div class="innerContainer fifthTaskSwitchContainer">
+            <div id="fifthTask">
+              <h3 id="fifthTaskHeader">Click me to see some magic</h3>
+            </div>
+          </div>
         </div>
-    </div>
-    <br />
-    <!-- fourth -->
-    <div class="fourthTaskContainer">
-        <div class="innerContainer">
-            <input type="text" placeholder="write something" id="textInput" />
-        </div>
-        <div id="fourthTaskResult">
-        </div>
-    </div>
-    <br />
-    <!-- fifth -->
-    <div class="fifthTaskContainer">
-        <div id="fifthTask" style="position: relative; width: 200px; height: 200px; background: yellow">
-            <h3 id="fifthTaskHeader">Click me to see some magic</h3>
-        </div>
-    </div>
+      </div>
+    </main>
     <!-- fun ends here -->
     <script src="./script/jquery.js" defer></script>
     <script src="./script/main.js" defer></script>
-</body>
+  </body>
 </html>

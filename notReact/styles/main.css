@@ -1,6 +1,302 @@
-*{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --mainBg: rgba(246, 246, 246, 1);
+  --bg1: rgba(223, 223, 223, 1);
+  --bg2: rgba(255, 255, 255, 1);
+  --yellow: rgba(255, 206, 31, 1);
+  --yellowHover: rgba(255, 223, 107, 1);
+  --textColor: rgba(31, 31, 31, 1);
+  --green: rgba(113, 182, 80, 1);
+
+  --insideShadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+  --outsideShadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+  --fontFamily: "Poppins", sans-serif;
 }
+
+[data-theme="dark"] {
+  --mainBg: rgba(31, 31, 31, 1);
+  --bg1: rgba(87, 87, 87, 1);
+  --bg2: rgba(50, 49, 49, 1);
+  --textColor: rgba(223, 223, 223, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+h3 {
+  font-weight: 700;
+  color: var(--textColor);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+body {
+  font-family: var(--fontFamily);
+  font-size: 16px;
+  background-color: var(--mainBg);
+}
+
+.mainContainer {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* task list styles start */
+.task {
+  margin-bottom: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--textColor);
+}
+
+.task:last-child {
+  margin-bottom: 0;
+}
+
+.task .taskCheckbox {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  background-color: var(--bg1);
+  border-radius: 3px;
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+  left: 0;
+}
+
+.task .taskCheckbox.checked + span {
+  text-decoration: line-through 3px var(--green);
+}
+
+.task .taskCheckbox.checked::after {
+  content: "✔️";
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 3px;
+  font-size: 1.3rem;
+}
+/* task list styles end */
+
+/* features start */
+.featuresContainer {
+  margin-top: 3rem;
+}
+
+.taskExampleContainer {
+  margin-bottom: 3rem;
+}
+
+.taskHeader {
+  margin-bottom: 1rem;
+}
+
+.taskHeader .taskNumber {
+  font-weight: 400;
+  font-size: 2.5rem;
+  display: inline-block;
+  color: var(--green);
+}
+
+.taskHeader .taskTitle {
+  font-weight: 600;
+  position: relative;
+  left: -7px;
+  top: -17px;
+  font-size: 1rem;
+  color: var(--textColor);
+}
+
+.innerContainer {
+  padding: 0 0 2rem;
+}
+
+.firstTaskBtn {
+  color: rgba(31, 31, 31, 1);
+  background: var(--yellow);
+  padding: 0.7rem 3rem;
+  border-radius: 0.7rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: var(--fontFamily);
+  box-shadow: var(--outsideShadow);
+  cursor: pointer;
+  transition: background 500ms linear;
+  -webkit-transition: background 500ms linear;
+}
+
+.firstTaskBtn:hover {
+  background: var(--yellowHover);
+}
+
+.resultContainer {
+  background-color: var(--bg1);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  position: relative;
+  height: 74px;
+}
+
+.resultContainer p {
+  color: var(--textColor);
+  font-weight: 700;
+  font-size: 1.7rem;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  opacity: 0;
+}
+
+.customRadio {
+  cursor: pointer;
+}
+
+.customRadio span {
+  display: inline-block;
+}
+
+.customRadio span:nth-child(1) {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: var(--bg1);
+  border-radius: 50px;
+  position: relative;
+  top: 5px;
+  left: 0;
+  margin-right: 3px;
+  box-shadow: var(--insideShadow);
+}
+
+.customRadio.activeRadio span:nth-child(1)::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--yellow);
+  z-index: 1;
+  border-radius: 50px;
+}
+
+.customRadio.activeRadio span:nth-child(1)::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  position: absolute;
+  left: 0.3rem;
+  top: 0.3rem;
+  background-color: var(--bg1);
+  z-index: 2;
+  border-radius: 50px;
+}
+
+.customRadio span:nth-child(2) {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--textColor);
+}
+
+#secondTaskRealRadio {
+  display: none;
+}
+
+.dragDropContainer {
+  padding: 0 0 2rem;
+}
+
+.dropBox {
+  background-color: var(--bg2);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  box-shadow: var(--insideShadow);
+  display: inline-block;
+  margin-right: 4rem;
+}
+
+.dropBox:last-child {
+  margin-right: 0;
+}
+
+.dragItem {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  font-size: 4rem;
+  color: var(--yellow);
+  background: transparent;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.inputContainer span {
+  position: absolute;
+  top: 0.4rem;
+  left: 1rem;
+  font-size: 1.4rem;
+}
+
+.inputContainer .textInput {
+  padding: 1rem 1rem 1rem 3.2rem;
+  background: var(--bg2);
+  color: var(--textColor);
+  font-family: var(--fontFamily);
+  font-weight: 600;
+  font-size: 0.8rem;
+  width: 70%;
+  border-radius: 0.5rem;
+  box-shadow: var(--insideShadow);
+}
+
+.inputContainer .textInput:placeholder-shown {
+  font-weight: 400;
+}
+
+.resultContainer span {
+  color: var(--textColor);
+  font-weight: 700;
+  font-size: 1.7rem;
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 1rem;
+  opacity: 0;
+}
+
+.fifthTaskSwitchContainer {
+  background-color: var(--bg2);
+  box-shadow: var(--insideShadow);
+  border-radius: 0.7rem;
+  padding: 1rem;
+  margin-bottom: 4rem;
+}
+
+#fifthTask {
+  position: relative;
+  width: 50%;
+  height: 180px;
+  padding: 1rem;
+  background-color: var(--bg1);
+  border-radius: 0.7rem;
+  box-shadow: var(--outsideShadow);
+}
+
+/* features end */
