@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css" />
+    <title>360 Training Task</title>
+</head>
+<body style="position: relative;">
+    <!-- start tasklist -->
+    <div class="taskList">
+        <ul>
+            <li class="task">
+                <span class="taskCheckbox"></span>
+                <span>Click button and show text with sliding or fading animation</span>
+            </li>
+            <li class="task">
+                <span class="taskCheckbox"></span>
+                <span>Radio button and show text with sliding or fading animation</span>
+            </li>
+            <li class="task">
+                <span class="taskCheckbox"></span>
+                <span>Drag an object from one place to other, when placed at another hot spot show text with sliding or fading animation</span>
+            </li>
+            <li class="task">
+                <span class="taskCheckbox"></span>
+                <span>Right text in a Fill in the blank and show text with sliding or fading animation</span>
+            </li>
+            <li class="task">
+                <span class="taskCheckbox"></span>
+                <span>Sliding DIV when clicked on its header, slide back to original position when clicked outside</span>
+            </li>
+        </ul>
+    </div>
+    <!-- end tasklist -->
+
+    <!-- fun begins here -->
+    <br />
+    <!-- first -->
+    <div class="firstTaskContainer">
+        <div class="innerContainer">
+            <button id="firstTask" type="button">First Task</button>
+        </div>
+        <div id="firstTaskResult">
+            <p style="position: relative;">Magic</p>
+        </div>
+    </div>
+    <br />
+    <!-- second -->
+    <div class="secondTaskContainer">
+        <div class="innerContainer">
+            <div class="customRadioContainer">
+                <div id="customRadio">
+                    <span style="width: 10px; height: 10px; background: gray; display: block;"></span>
+                    <span>Second Task</span>
+                </div>
+                <input id="secondTaskRealRadio" type="radio" />
+            </div>
+        </div>
+        <div id="secondTaskResult">
+            <p style="position: relative;">Magic</p>
+        </div>
+    </div>
+    <br />
+    <!-- third -->
+    <div class="thirdTaskContainer">
+        <div class="dragDropContainer">
+            <div class="leftDrop" style="width: 50px; height: 50px; border: 1px solid black; display: inline-block; margin-right: 50px;">
+                <span id="dragItem" draggable="true" style="font-size: 24px">👉</span>
+            </div>
+            <div class="rightDrop" style="width: 50px; height: 50px; border: 1px solid black; display: inline-block;">
+
+            </div>
+        </div>
+        <div id="thirdTaskResult">
+            <p style="position: relative;">Magic</p>
+        </div>
+    </div>
+    <br />
+    <!-- fourth -->
+    <div class="fourthTaskContainer">
+        <div class="innerContainer">
+            <input type="text" placeholder="write something" id="textInput" />
+        </div>
+        <div id="fourthTaskResult">
+        </div>
+    </div>
+    <br />
+    <!-- fifth -->
+    <div class="fifthTaskContainer">
+        <div id="fifthTask" style="position: relative; width: 200px; height: 200px; background: yellow">
+            <h3 id="fifthTaskHeader">Click me to see some magic</h3>
+        </div>
+    </div>
+    <!-- fun ends here -->
+    <script src="./script/jquery.js" defer></script>
+    <script src="./script/main.js" defer></script>
+</body>
+</html>
