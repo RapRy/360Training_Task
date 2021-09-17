@@ -263,7 +263,7 @@ body {
   font-family: var(--fontFamily);
   font-weight: 600;
   font-size: 0.8rem;
-  width: 70%;
+  width: 100%;
   border-radius: 0.5rem;
   box-shadow: var(--insideShadow);
 }
@@ -346,6 +346,10 @@ body {
     .featuresContainer{
         grid-column: 1 / 2;
         grid-row: 1 / 2;
+    }
+
+    .inputContainer .textInput {
+      width: 70%;
     }
 
 }
