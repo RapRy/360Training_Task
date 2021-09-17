@@ -47,6 +47,10 @@
             >
           </li>
         </ul>
+        <div class="demo">
+            <code>Demo Done by Ralph Ryan Olarte</code> <br>
+            <code><span>👉</span><a href="https://github.com/RapRy">check my github page to see some of my projects</a></code>
+          </div>
       </div>
       <!-- end tasklist -->
 
@@ -96,12 +100,13 @@
           </div>
           <div class="dragDropContainer">
             <div class="leftDrop dropBox">
-              <span id="dragItem" class="dragItem" draggable="true">👉</span>
             </div>
-            <div class="rightDrop dropBox"></div>
+            <div class="rightDrop dropBox">
+                <span id="dragItem" class="dragItem" draggable="true">👈</span>
+            </div>
           </div>
           <div id="thirdTaskResult" class="resultContainer">
-            <p>Going to Right</p>
+            <p>Going to Left</p>
           </div>
         </div>
         <br />
@@ -122,7 +127,10 @@
               />
             </div>
           </div>
-          <div id="fourthTaskResult" class="resultContainer"></div>
+          <div class="fourthTaskResultContainer">
+              <div id="fourthTaskResult" class="resultContainer"></div>
+              <span class="letterPointer"></span>
+          </div>
         </div>
         <br />
         <!-- fifth -->
@@ -138,6 +146,7 @@
           </div>
         </div>
       </div>
+
     </main>
     <!-- fun ends here -->
     <script src="./script/jquery.js" defer></script>

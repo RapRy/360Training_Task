@@ -47,7 +47,7 @@ $(() => {
 
       this.secondTaskResult
         .find("p")
-        .animate({ left: !this.stToggle ? "25px" : "0px" });
+        .animate({ right: !this.stToggle ? this.secondTaskResult.width() - this.secondTaskResult.find('p').innerWidth() : "0px", opacity: !this.stToggle ? 1 : 0 });
       this.stToggle = !this.stToggle;
       return;
     };
@@ -58,24 +58,27 @@ $(() => {
       if (this.initBoxPosition !== "" && dragItemPos === "left") {
         this.thirdTaskResult
           .find("p")
-          .text("Going to Left")
-          .animate({ left: "25px" });
+          .animate({ right: "1.5rem" }, { complete: function(){
+            $(this).text("Going to Left")
+          } });
         return;
       }
 
       if (dragItemPos === "left") {
         this.thirdTaskResult
           .find("p")
-          .text("Going to Left")
-          .animate({ left: "25px" });
+          .animate({ right: "1.5rem" }, { complete: function(){
+              $(this).text("Going to Left")
+          } });
         return;
       }
 
       if (dragItemPos === "right") {
         this.thirdTaskResult
           .find("p")
-          .text("Going to Right")
-          .animate({ left: "0" });
+          .animate({ right: this.thirdTaskResult.width() - this.thirdTaskResult.find("p").innerWidth() }, { complete: function(){
+            $(this).text("Going to Right")
+          } });
         return;
       }
     };
@@ -110,9 +113,21 @@ $(() => {
               complete: () => {
                 this.taskListCheckboxes.eq(3).addClass("checked");
                 this.inputValue = e.target.value;
+                $("#fourthTaskResult").find('span').each(function(){
+                    if($(this).text() === " "){
+                        if($(this).attr("data-hasWidth") === undefined )
+                            $(this).css({ width: ".9rem" }).attr('data-hasWidth', true)
+                    }
+                })
               },
             }
           );
+
+          const valueLength = e.target.value.length
+          const leftPostValue = $('.letterPointer').position().left
+          const spanLast = $("#fourthTaskResult").find('span').eq(e.target.value.length - 1)
+
+          $('.letterPointer').css({ left: (valueLength === 1 ? 44 : (leftPostValue + (spanLast.text() === " " ? 14 : spanLast.innerWidth()))) })
       }
 
       if (e.target.value.length === 0) {
@@ -136,7 +151,6 @@ $(() => {
       const keyCode = e.keyCode;
 
       if (keyCode === 8 || keyCode === 46) {
-        console.log(`keycode ${keyCode}`);
         $("#fourthTaskResult")
           .find("span:last-child")
           .animate(
@@ -148,6 +162,12 @@ $(() => {
               },
             }
           );
+
+          const valueLength = e.target.value.length
+          const leftPostValue = $('.letterPointer').position().left
+          const spanLast = $("#fourthTaskResult").find('span').eq(e.target.value.length - 1)
+  
+          $('.letterPointer').css({ left: (valueLength === 1 ? 22 : (leftPostValue - (spanLast.text() === " " ? 14 : spanLast.innerWidth()))) })
       }
     };
 
@@ -192,10 +212,13 @@ $(() => {
     init = () => {
       // click event first task
       $("#firstTask").on("click", this.firstTaskFn);
+
       // click event second task
       $("#secondTask").on("change", this.secondTaskFn);
       $("#customRadio").on("click", this.secondTaskFn);
+
       // third task events
+      this.thirdTaskResult.find("p").css({ opacity: 1, right: "1.5rem" })
       $("#dragItem").on("dragstart", this.thirdTaskFn_Drag);
 
       $(".rightDrop")

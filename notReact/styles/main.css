@@ -51,6 +51,8 @@ body {
   padding: 1rem;
   grid-template-columns: 1fr;
   gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* task list styles start */
@@ -237,7 +239,7 @@ body {
 .dragItem {
   position: absolute;
   top: 0;
-  left: 1rem;
+  left: .5rem;
   font-size: 4rem;
   color: var(--yellow);
   background: transparent;
@@ -281,6 +283,36 @@ body {
   opacity: 0;
 }
 
+.fourthTaskResultContainer{
+    position: relative;
+}
+
+.letterPointer{
+    width: 1.3rem;
+    height: .2rem;
+    display: inline-block;
+    border-radius: 2px;
+    background-color: var(--textColor);
+    position: absolute;
+    bottom: 1rem;
+    left: 22px;
+    animation: blink 1000ms linear infinite;
+    -webkit-animation: blink 1000ms linear infinite;
+    -moz-animation: blink 1000ms linear infinite;
+}
+
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 .fifthTaskSwitchContainer {
   background-color: var(--bg2);
   box-shadow: var(--insideShadow);
@@ -300,3 +332,56 @@ body {
 }
 
 /* features end */
+
+@media all and (min-width: 1000px){
+    .mainContainer {
+        grid-template-columns: 1fr .6fr;
+        gap: 5rem;
+    }
+    .taskList{
+        margin-top: 3rem;
+        grid-column: 2 / 3;
+    }
+
+    .featuresContainer{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+}
+
+.demo{
+    margin-top: 2rem;
+}
+
+code{
+    margin-left: 1rem;
+    font-size: .85rem;
+    color: var(--textColor);
+}
+
+code a{
+    color: var(--green);
+}
+
+code span{
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    left: -5px;
+    animation: emojAnim 500ms ease-in-out infinite;
+    -webkit-animation: emojAnim 500ms ease-in-out infinite;
+    -moz-animation: emojAnim 500ms ease-in-out infinite;
+}
+
+@keyframes emojAnim {
+    0% {
+        left: 0px;
+    }
+    50% {
+        left: -5px;
+    }
+    100% {
+        left: 0px;
+    }
+}
