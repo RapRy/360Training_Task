@@ -82,10 +82,68 @@ $(() => {
         return;
       }
     };
+    
 
     thirdTaskFn_Drag = (e) => {
-      e.originalEvent.dataTransfer.setData("id", e.target.id);
+    if(e.type === "dragstart"){
+        e.originalEvent.dataTransfer.setData("id", e.target.id);
+        return
+    }
+
+    if(e.type === "touchmove"){
+        const touchLocation = e.targetTouches[0]
+        $('.dropBox').css({ position: "static" })
+        $(e.currentTarget).css({ left: touchLocation.pageX + "px", top: touchLocation.pageY + "px" })
+    }
     };
+
+    thirdTaskFn_TouchEnd_Ext = (selector, draggableItem) => {
+        this.taskListCheckboxes.eq(2).addClass("checked");
+        $('.dropBox').css({ position: "relative" })
+        $(draggableItem).css({ left: "0.5rem", top: 0 })
+        $(`.${selector}`).append(draggableItem)
+    }
+
+    thirdTaskFn_touchEnd = (e) => {
+        const righDrop = $('.rightDrop')
+        const leftDrop = $('.leftDrop')
+        const draggableItem = $(e.currentTarget)
+
+        const rightDrop_offset = righDrop.offset()
+        const rightDrop_height = righDrop.outerHeight(true)
+        const rightDrop_width = righDrop.outerWidth(true)
+        const rightDrop_dFromTop = rightDrop_offset.top + rightDrop_height
+        const rightDrop_dFromLeft = rightDrop_offset.left + rightDrop_width
+
+        const leftDrop_offset = leftDrop.offset()
+        const leftDrop_height = leftDrop.outerHeight(true)
+        const leftDrop_width = leftDrop.outerWidth(true)
+        const leftDrop_dFromTop = leftDrop_offset.top + leftDrop_height
+        const leftDrop_dFromLeft = leftDrop_offset.left + leftDrop_width
+
+        const draggableItem_offset = draggableItem.offset()
+
+        let collideLeft = (leftDrop_dFromTop < draggableItem_offset.top || draggableItem_offset.top > leftDrop_dFromTop || leftDrop_dFromLeft < draggableItem_offset.left || draggableItem_offset.left > leftDrop_dFromLeft)
+
+        let collideRight = (rightDrop_dFromTop < draggableItem_offset.top || draggableItem_offset.top > rightDrop_dFromTop || rightDrop_dFromLeft < draggableItem_offset.left || draggableItem_offset.left > rightDrop_dFromLeft)
+
+        if(!collideLeft){
+            this.thirdTaskFn("right")
+            this.thirdTaskFn_TouchEnd_Ext('leftDrop', e.currentTarget)
+            return
+        }
+
+        if(!collideRight){
+            this.thirdTaskFn("left")
+            this.thirdTaskFn_TouchEnd_Ext('rightDrop', e.currentTarget)
+            return
+        }
+
+        if(collideRight && collideLeft){
+            $('.dropBox').css({ position: "relative" })
+            $(e.currentTarget).css({ left: "0.5rem", top: 0 })
+        }
+    }
 
     thirdTaskFn_AllowDrop = (e) => {
       e.preventDefault();
@@ -219,7 +277,7 @@ $(() => {
 
       // third task events
       this.thirdTaskResult.find("p").css({ opacity: 1, right: "1.5rem" })
-      $("#dragItem").on("dragstart", this.thirdTaskFn_Drag);
+      $("#dragItem").on("dragstart", this.thirdTaskFn_Drag).on('touchmove', this.thirdTaskFn_Drag).on('touchend', this.thirdTaskFn_touchEnd)
 
       $(".rightDrop")
         .on("drop", (e) => {
